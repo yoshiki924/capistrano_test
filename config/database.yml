@@ -22,6 +22,7 @@ test:
 
 production:
   <<: *default
+  encoding: utf8
   database: capistrano_test_production
   username: root
   password: <%= ENV['DATABASE_PASSWORD'] %>
