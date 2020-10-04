@@ -31,7 +31,7 @@ set :log_level, :debug
 namespace :deploy do
   desc 'Restart application'
   task :restart do
-    invoke 'unicorn restart'
+    invoke 'unicorn:restart'
   end
 
   desc 'Create database'
@@ -59,7 +59,7 @@ namespace :deploy do
   after :publishing, :restart
 
   after :restart, :clear_cache do
-    on roles(:web), in: groups, limit: 3, wait: 10 do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
     end
   end
 end
